@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Crear Categoría</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #e6f0fa;
+        margin: 0;
+        padding: 20px;
+        color: #1f3b57;
+    }
+
+    h1 {
+        text-align: center;
+        color: #0f2d47;
+    }
+
+    .container {
+        max-width: 500px;
+        margin: auto;
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    label {
+        font-weight: bold;
+        display: block;
+        margin-top: 15px;
+        margin-bottom: 5px;
+    }
+
+    input, textarea {
+        width: 100%;
+        padding: 10px;
+        border-radius: 6px;
+        border: 1px solid #bcd4e6;
+        background: #f7fbff;
+        transition: 0.2s;
+    }
+
+    textarea {
+        resize: vertical;
+        min-height: 80px;
+    }
+
+    input:focus, textarea:focus {
+        outline: none;
+        border-color: #3b82f6;
+        background: #eef6ff;
+    }
+
+    button {
+        background: #3b82f6;
+        color: white;
+        padding: 10px;
+        width: 100%;
+        margin-top: 20px;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: 0.2s;
+    }
+
+    button:hover {
+        background: #2563eb;
+    }
+
+    a.back {
+        display: block;
+        margin-top: 15px;
+        text-align: center;
+        text-decoration: none;
+        color: #2563eb;
+        font-weight: bold;
+    }
+
+    a.back:hover {
+        text-decoration: underline;
+    }
+</style>
+</head>
+
+<body>
+
+<h1>Crear Categoría</h1>
+
+<div class="container">
+
+    <form method="post">
+        {% csrf_token %}
+
+        <label>Nombre:</label>
+        <input type="text" name="nombre" required>
+
+        <label>Descripción:</label>
+        <textarea name="descripcion"></textarea>
+
+        <button type="submit">Guardar Categoría</button>
+    </form>
+
+    <a class="back" href="{% url 'categoria-listar' %}">⬅ Volver al listado</a>
+</div>
+
+</body>
+</html>

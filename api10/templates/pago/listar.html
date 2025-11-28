@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de pagos</title>
+</head>
+<body>
+    <h1>Pagos registrados</h1>
+
+    <a href="{% url 'pago_create' %}">Crear Pago</a>
+
+    <ul>
+        {% for p in pagos %}
+            <li>
+                Usuario: {{ p.usuario.nombre }} |
+                Reseña ID: {{ p.reseña.id }} |
+                Método: {{ p.metodo_pago }} |
+                Estado: {{ p.estado_pago }}
+
+                <a href="{% url 'pago_detail' p.id %}">Ver</a>
+                <a href="{% url 'pago_update' p.id %}">Editar</a>
+                <a href="{% url 'pago_delete' p.id %}">Eliminar</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

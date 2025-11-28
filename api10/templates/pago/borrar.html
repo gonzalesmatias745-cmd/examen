@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Eliminar Pago</title>
+</head>
+<body>
+    <h1>¿Deseas eliminar este pago?</h1>
+
+    <p>
+        Usuario: {{ pago.usuario.nombre }} <br>
+        Reseña ID: {{ pago.reseña.id }} <br>
+        Método: {{ pago.metodo_pago }} <br>
+        Estado: {{ pago.estado_pago }}
+    </p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Eliminar</button>
+    </form>
+
+    <a href="{% url 'pago_list' %}">Cancelar</a>
+</body>
+</html>

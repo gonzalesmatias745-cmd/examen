@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalles del Pedido</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #e8f2ff;
+            margin: 0;
+            padding: 20px;
+            color: #00334d;
+        }
+        h1 {
+            text-align: center;
+            color: #002233;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #c5dcf2;
+            text-align: center;
+        }
+        th {
+            background: #b6d8f5;
+        }
+        tr:hover {
+            background: #dfefff;
+        }
+        a {
+            background: #5fa8d3;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        a:hover {
+            background: #4b90b8;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Detalles del Pedido</h1>
+
+<a href="/api6/detalles/crear/">Crear Detalle</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Pedido</th>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Subtotal</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for d in detalles %}
+        <tr>
+            <td>{{ d.id }}</td>
+            <td>{{ d.pedido.id }}</td>
+            <td>{{ d.producto.nombre }}</td>
+            <td>{{ d.cantidad }}</td>
+            <td>{{ d.subtotal }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Pedidos</title>
+    <style>
+        body {
+            background: #e9f2ff;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+            color: #1d3557;
+        }
+        table {
+            width: 85%;
+            margin: auto;
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            border-collapse: collapse;
+            box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+        }
+        th {
+            background: #457b9d;
+            color: white;
+            padding: 12px;
+        }
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #cbd5e1;
+        }
+        .btn {
+            background: #1d3557;
+            padding: 10px 14px;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+        .btn-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Lista de Pedidos</h1>
+
+<div class="btn-container">
+    <a class="btn" href="{% url 'pedido-crear' %}">Crear nuevo pedido</a>
+</div>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Usuario</th>
+        <th>Fecha</th>
+        <th>Estado</th>
+        <th>Total</th>
+        <th>Dirección</th>
+    </tr>
+
+    {% for p in pedidos %}
+    <tr>
+        <td>{{ p.id }}</td>
+        <td>{{ p.usuario.nombre }}</td>
+        <td>{{ p.fecha_pedido }}</td>
+        <td>{{ p.estado }}</td>
+        <td>${{ p.total }}</td>
+        <td>{{ p.direccion_envio }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>

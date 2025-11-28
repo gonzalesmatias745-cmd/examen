@@ -1,11 +1,18 @@
-from rest_framework import generics
+from django.shortcuts import render, redirect
 from .models import Usuario
-from .serializers import UsuarioSerializer
 
-class UsuarioListCreateView(generics.ListCreateAPIView):
-    queryset = Usuario.objects.all()
-    serializer_class = UsuarioSerializer
+def listar_usuarios(request):
+    usuarios = Usuario.objects.all()
+    return render(request, 'usuarios/listar.html', {'usuarios': usuarios})
 
-class UsuarioRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Usuario.objects.all()
-    serializer_class = UsuarioSerializer
+def crear_usuario(request):
+    if request.method == 'POST':
+        Usuario.objects.create(
+            nombre=request.POST['nombre'],
+            email=request.POST['email'],
+            telefono=request.POST.get('telefono', ''),
+            activo=True
+        )
+        return redirect('usuario-listar')
+    return render(request, 'usuarios/crear.html')
+

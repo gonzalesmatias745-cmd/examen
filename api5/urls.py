@@ -1,8 +1,18 @@
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from api4.views import ProvedorListCreateView, ProvedorRetrieveUpdateDestroyView
+from django.urls import path
+from .views import (
+    listar_pedidos,
+    crear_pedido,
+    PedidoListCreateView,
+    PedidoRetrieveUpdateDestroyView
+)
 
 urlpatterns = [
-    path('provedores/', ProvedorListCreateView.as_view(), name='provedor-list-create'),
-    path('provedores/<int:pk>/', ProvedorRetrieveUpdateDestroyView.as_view(), name='provedor-detail'),
+    # HTML
+    path('pedidos/', listar_pedidos, name='pedido-listar'),
+    path('pedidos/crear/', crear_pedido, name='pedido-crear'),
+
+    # API JSON
+    path('api/', PedidoListCreateView.as_view(), name='pedido-api'),
+    path('api/<int:pk>/', PedidoRetrieveUpdateDestroyView.as_view(), name='pedido-api-detalle'),
 ]
+

@@ -1,7 +1,7 @@
 from django.contrib import admin
-from api4.models import provedor
+from .models import Proveedor
 
-@admin.register(provedor)
-class ProvedorAdmin(admin.ModelAdmin):
-    list_display = ('nombre', 'direccion', 'telefono', 'email')
-    search_fields = ('nombre', 'direccion', 'email')
+@admin.register(Proveedor)
+class ProveedorAdmin(admin.ModelAdmin):
+    list_display = ('nombre', 'telefono', 'email')
+    search_fields = ('nombre', 'email', 'telefono')

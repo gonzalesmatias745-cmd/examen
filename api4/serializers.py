@@ -1,6 +1,7 @@
 from rest_framework import serializers
-from api4.models import provedor
-class ProvedorSerializer(serializers.ModelSerializer):
+from .models import Proveedor
+
+class ProveedorSerializer(serializers.ModelSerializer):
     class Meta:
-        model = provedor
-        fields = ['id', 'nombre', 'direccion', 'telefono', 'email']
+        model = Proveedor
+        fields = ['id', 'nombre', 'telefono', 'email', 'direccion']

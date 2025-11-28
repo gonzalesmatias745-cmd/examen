@@ -1,12 +1,7 @@
-from django.shortcuts import render
-from rest_framework import generics
-from api10.models import pago
-from api10.serializers import PagoSerializer
+from rest_framework import viewsets
+from .models import pago
+from .serializers import PagoSerializer
 
-class PagoListCreateView(generics.ListCreateAPIView):
-    queryset = pago.objects.all()
-    serializer_class = PagoSerializer
-
-class PagoRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+class PagoViewSet(viewsets.ModelViewSet):
     queryset = pago.objects.all()
     serializer_class = PagoSerializer

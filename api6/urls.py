@@ -1,8 +1,17 @@
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from api6.views import DetallePedidoListCreateView, DetallePedidoRetrieveUpdateDestroyView
+from django.urls import path
+from .views import (
+    listar_detalles,
+    crear_detalle,
+    DetallePedidoListCreateView,
+    DetallePedidoRetrieveUpdateDestroyView
+)
 
 urlpatterns = [
-    path('detallespedidos/', DetallePedidoListCreateView.as_view(), name='detallepedido-list-create'),
-    path('detallespedidos/<int:pk>/', DetallePedidoRetrieveUpdateDestroyView.as_view(), name='detallepedido-detail'),
+    # HTML
+    path('detalles/', listar_detalles, name='detalle-listar'),
+    path('detalles/crear/', crear_detalle, name='detalle-crear'),
+
+    # API JSON
+    path('api/', DetallePedidoListCreateView.as_view(), name='detalle-api'),
+    path('api/<int:pk>/', DetallePedidoRetrieveUpdateDestroyView.as_view(), name='detalle-api-detalle'),
 ]

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Productos</title>
+    <style>
+        body {
+            background: #e9f1f7;
+            font-family: Arial, sans-serif;
+            color: #2e3a45;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 20px 0;
+            color: #1b3b5f;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        table thead {
+            background: #c9dff2;
+        }
+
+        table th, table td {
+            padding: 12px;
+            border-bottom: 1px solid #d9e6f0;
+            text-align: left;
+        }
+
+        tr:hover {
+            background: #edf6fc;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 15px;
+            background: #3f7fbf;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #316a9a;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Listado de Productos</h1>
+
+    <div class="container">
+
+        <a href="{% url 'producto-crear' %}" class="btn">Crear Producto</a>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Activo</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for producto in productos %}
+                <tr>
+                    <td>{{ producto.nombre }}</td>
+                    <td>${{ producto.precio }}</td>
+                    <td>{{ producto.activo|yesno:"Sí,No" }}</td>
+                    <td>{{ producto.descripcion|truncatechars:50 }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4">No hay productos registrados.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+</body>
+</html>

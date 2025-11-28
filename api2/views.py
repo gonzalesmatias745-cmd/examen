@@ -1,11 +1,15 @@
-from django.shortcuts import render
-from rest_framework import generics
-from api2.models import categoria
-from api2.serializers import CategoriaSerializer
+from django.shortcuts import render, redirect
+from .models import Categoria
 
-class CategoriaListCreateView(generics.ListCreateAPIView):
-    queryset = categoria.objects.all()
-    serializer_class = CategoriaSerializer
-class CategoriaRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = categoria.objects.all()
-    serializer_class = CategoriaSerializer
+def listar_categorias(request):
+    categorias = Categoria.objects.all()
+    return render(request, 'categorias/listar.html', {'categorias': categorias})
+
+def crear_categoria(request):
+    if request.method == 'POST':
+        Categoria.objects.create(
+            nombre=request.POST['nombre'],
+            descripcion=request.POST.get('descripcion', '')
+        )
+        return redirect('categoria-listar')
+    return render(request, 'categorias/crear.html')

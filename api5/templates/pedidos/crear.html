@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Pedido</title>
+    <style>
+        body {
+            background: #edf6f9;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+            color: #1d3557;
+        }
+        form {
+            width: 45%;
+            background: white;
+            margin: auto;
+            margin-top: 30px;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 12px;
+            border: 1px solid #a8dadc;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+        button {
+            width: 100%;
+            background: #1d3557;
+            padding: 12px;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #457b9d;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Crear Pedido</h1>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <label>Usuario:</label>
+    <select name="usuario" required>
+        {% for u in usuarios %}
+            <option value="{{ u.id }}">{{ u.nombre }} ({{ u.email }})</option>
+        {% endfor %}
+    </select>
+
+    <label>Total (COP):</label>
+    <input type="number" step="0.01" name="total" placeholder="Ej: 150000" required>
+
+    <label>Estado:</label>
+    <select name="estado">
+        <option value="PENDIENTE">Pendiente</option>
+        <option value="ENVIADO">Enviado</option>
+        <option value="ENTREGADO">Entregado</option>
+        <option value="CANCELADO">Cancelado</option>
+    </select>
+
+    <label>Dirección de envío:</label>
+    <textarea name="direccion_envio" rows="3" placeholder="Escribe la dirección completa"></textarea>
+
+    <button type="submit">Guardar Pedido</button>
+</form>
+
+</body>
+</html>

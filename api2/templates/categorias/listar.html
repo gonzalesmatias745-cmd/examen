@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Listado de Categorías</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #e8f1f8;
+        margin: 0;
+        padding: 20px;
+        color: #1f3b57;
+    }
+
+    h1 {
+        text-align: center;
+        color: #0f2d47;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: auto;
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    a.btn {
+        display: inline-block;
+        background: #3b82f6;
+        color: white;
+        padding: 10px 18px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: 0.2s;
+        margin-bottom: 20px;
+    }
+
+    a.btn:hover {
+        background: #2563eb;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+    }
+
+    th {
+        background: #d0e4fa;
+        padding: 10px;
+        text-align: left;
+        color: #0f2d47;
+    }
+
+    td {
+        background: #f7fbff;
+        padding: 10px;
+        border-bottom: 1px solid #d6e2f0;
+    }
+
+    tr:hover td {
+        background: #e9f3ff;
+    }
+</style>
+</head>
+
+<body>
+
+<h1>Listado de Categorías</h1>
+
+<div class="container">
+    <a class="btn" href="{% url 'categoria-crear' %}">➕ Crear categoría</a>
+
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Fecha creación</th>
+        </tr>
+
+        {% for c in categorias %}
+        <tr>
+            <td>{{ c.nombre }}</td>
+            <td>{{ c.descripcion }}</td>
+            <td>{{ c.fecha_creacion }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+</body>
+</html>

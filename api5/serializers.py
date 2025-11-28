@@ -1,8 +1,7 @@
 from rest_framework import serializers
-from api5.models import pedido
+from .models import pedido
 
 class PedidoSerializer(serializers.ModelSerializer):
     class Meta:
         model = pedido
-        fields = ['id', 'cliente', 'fecha_pedido', 'estado', 'total']
-        
+        fields = ['id', 'usuario', 'fecha_pedido', 'estado', 'total', 'direccion_envio']

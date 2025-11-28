@@ -1,9 +1,7 @@
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from api3.views import ProductoListCreateView, ProductoRetrieveUpdateDestroyView
+from django.urls import path
+from . import views
 
 urlpatterns = [
-    path('productos/', ProductoListCreateView.as_view(), name='producto-list-create'),
-    path('productos/<int:pk>/', ProductoRetrieveUpdateDestroyView.as_view(), name='producto-detail'),
+    path('productos/', views.listar_productos, name='producto-listar'),
+    path('productos/crear/', views.crear_producto, name='producto-crear'),
 ]
-

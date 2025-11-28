@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Proveedores</title>
+    <style>
+        body {
+            background: #e9f2ff;
+            font-family: Arial;
+        }
+        table {
+            width: 70%;
+            margin: auto;
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+        }
+        th {
+            background: #457b9d;
+            color: white;
+        }
+        td {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+        h1 {
+            text-align: center;
+            color: #1d3557;
+        }
+        a {
+            background: #1d3557;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Proveedores</h1>
+
+    <div style="text-align:center;">
+        <a href="{% url 'proveedor-crear' %}">Crear nuevo proveedor</a>
+    </div>
+
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Teléfono</th>
+        </tr>
+
+        {% for proveedor in proveedores %}
+        <tr>
+            <td>{{ proveedor.nombre }}</td>
+            <td>{{ proveedor.email }}</td>
+            <td>{{ proveedor.telefono }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>

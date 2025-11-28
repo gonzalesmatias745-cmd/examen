@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Producto</title>
+    <style>
+        body {
+            background: #e9f1f7;
+            font-family: Arial, sans-serif;
+            color: #2e3a45;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1b3b5f;
+            margin-top: 20px;
+        }
+
+        .form-container {
+            width: 90%;
+            max-width: 600px;
+            background: #ffffff;
+            margin: 20px auto;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #1b3b5f;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            border: 1px solid #b6c9d8;
+            background: #f4f9fd;
+            font-size: 14px;
+        }
+
+        button {
+            background: #3f7fbf;
+            color: white;
+            padding: 12px 18px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #316a9a;
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin-bottom: 15px;
+            color: #3f7fbf;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .btn-back:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Crear Producto</h1>
+
+    <div class="form-container">
+
+        <a href="{% url 'producto-listar' %}" class="btn-back">← Volver al listado</a>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <label>Nombre del producto</label>
+            <input type="text" name="nombre" required>
+
+            <label>Descripción</label>
+            <textarea name="descripcion" rows="4"></textarea>
+
+            <label>Precio</label>
+            <input type="number" step="0.01" name="precio" required>
+
+            <label>Activo</label>
+            <select name="activo">
+                <option value="True">Sí</option>
+                <option value="False">No</option>
+            </select>
+
+            <button type="submit">Guardar</button>
+        </form>
+
+    </div>
+
+</body>
+</html>

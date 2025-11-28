@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Agregar Dirección</title>
+</head>
+<body>
+    <h1>Agregar Dirección de Envío</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <label>Usuario ID:</label>
+        <input type="number" name="usuario" required><br><br>
+
+        <label>Dirección:</label>
+        <input type="text" name="direccion" required><br><br>
+
+        <label>Ciudad:</label>
+        <input type="text" name="ciudad" required><br><br>
+
+        <label>Código Postal:</label>
+        <input type="text" name="codigo_postal" required><br><br>
+
+        <label>
+            <input type="checkbox" name="principal">
+            Dirección principal
+        </label><br><br>
+
+        <button type="submit">Guardar</button>
+    </form>
+
+</body>
+</html>

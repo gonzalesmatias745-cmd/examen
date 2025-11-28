@@ -1,8 +1,7 @@
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from api2.views import CategoriaListCreateView, CategoriaRetrieveUpdateDestroyView
+from django.urls import path
+from . import views
 
 urlpatterns = [
-    path('categorias/', CategoriaListCreateView.as_view(), name='categoria-list-create'),
-    path('categorias/<int:pk>/', CategoriaRetrieveUpdateDestroyView.as_view(), name='categoria-detail'),
+    path('categorias/', views.listar_categorias, name='categoria-listar'),
+    path('categorias/crear/', views.crear_categoria, name='categoria-crear'),
 ]

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Listado de Reseñas</title>
+</head>
+<body>
+
+<h1>Reseñas Registradas</h1>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Producto</th>
+        <th>Usuario</th>
+        <th>Calificación</th>
+        <th>Comentario</th>
+        <th>Fecha</th>
+    </tr>
+
+    {% for r in reseñas %}
+    <tr>
+        <td>{{ r.id }}</td>
+        <td>{{ r.producto.nombre }}</td>
+        <td>{{ r.usuario.nombre }}</td>
+        <td>{{ r.calificacion }}</td>
+        <td>{{ r.comentario }}</td>
+        <td>{{ r.fecha_creacion }}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+<br>
+<a href="{% url 'reseña-crear' %}">Crear nueva reseña</a>
+
+</body>
+</html>

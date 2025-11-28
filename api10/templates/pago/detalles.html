@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Detalle del pago</title>
+</head>
+<body>
+    <h1>Detalle del Pago</h1>
+
+    <p><strong>Usuario:</strong> {{ pago.usuario.nombre }}</p>
+    <p><strong>Reseña:</strong> {{ pago.reseña.id }}</p>
+    <p><strong>Método:</strong> {{ pago.metodo_pago }}</p>
+    <p><strong>Estado:</strong> {{ pago.estado_pago }}</p>
+
+    <a href="{% url 'pago_update' pago.id %}">Editar</a>
+    <a href="{% url 'pago_list' %}">Volver</a>
+</body>
+</html>
